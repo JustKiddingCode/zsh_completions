@@ -1,0 +1,13 @@
+#compdef mbsync
+
+_mbsync() {
+	local state
+	_arguments \
+		'1: :->channel'
+
+	case $state in
+		(channel) _arguments '1:profiles:($( grep -i channel ~/.mbsyncrc | sed "s,Channel ,,g" ))' ;;
+	esac
+}
+
+_mbsync "$@"
